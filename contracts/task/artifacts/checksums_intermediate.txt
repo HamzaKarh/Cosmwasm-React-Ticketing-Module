@@ -1,0 +1,1 @@
+ee5d10e58da0ac251f76205de79c885a3b901e7123fc8c093252b386ec6bd45c  ./target/wasm32-unknown-unknown/release/task.wasm
