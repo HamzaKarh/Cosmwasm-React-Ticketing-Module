@@ -1,7 +1,7 @@
 {
   "localterra": {
     "board": {
-      "codeId": "25",
+      "codeId": "28",
       "contractAddresses": {
         "default": "terra1cjm8yxdc64ttmunha0pqhae752gewe3stagfj0fhsyerfyen6c0s6kk236"
       }
@@ -13,9 +13,9 @@
       }
     },
     "token": {
-      "codeId": "27",
+      "codeId": "29",
       "contractAddresses": {
-        "default": "terra1tjjgafwn3xer2zt0rn5d63pylc4wjugl029jp4ss6wmpt335udxq9f3upl"
+        "default": "terra12ne7qtmdwd0j03t9t5es8md66wq4e5xg9neladrsag8fx3y89rcsnafl94"
       }
     }
   }
