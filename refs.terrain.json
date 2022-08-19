@@ -1,21 +1,21 @@
 {
   "localterra": {
     "board": {
-      "codeId": "25",
+      "codeId": "28",
       "contractAddresses": {
         "default": "terra1cjm8yxdc64ttmunha0pqhae752gewe3stagfj0fhsyerfyen6c0s6kk236"
       }
     },
     "task": {
-      "codeId": "26",
+      "codeId": "44",
       "contractAddresses": {
-        "default": "terra1plxt87jcgewnzksmy7h96hps4edzqqtj92cqdgl6l9qgffjy7d5q2f0x46"
+        "default": "terra1padhf4ykjuj8nn4zjlw8069paqzsm7ya0p8u2rsdmswtzel5z5tsnx4l2z"
       }
     },
     "token": {
-      "codeId": "27",
+      "codeId": "40",
       "contractAddresses": {
-        "default": "terra1tjjgafwn3xer2zt0rn5d63pylc4wjugl029jp4ss6wmpt335udxq9f3upl"
+        "default": "terra1mthjuv6jghr4humsrjsqt3ca363yvgu3wwsq649hkuyf840p6acs254nqe"
       }
     }
   }

@@ -28,37 +28,31 @@ async function waitForInclusionInBlock(lcd: LCDClient, txHash: string): Promise<
   return res;
 };
 export type ExecuteMsg = {
-  increment: {
-    [k: string]: unknown;
-  };
-} | {
-  reset: {
-    count: number;
-    [k: string]: unknown;
-  };
-};
-export interface GetCountResponse {
-  count: number;
-  [k: string]: unknown;
-}
-export interface InstantiateMsg {
-  count: number;
-  [k: string]: unknown;
-}
-export type QueryMsg = {
-  get_count: {
+  transfer: {
+    target: Addr;
     [k: string]: unknown;
   };
 };
 export type Addr = string;
+export interface GetOwnerResponse {
+  owner: Addr;
+  [k: string]: unknown;
+}
+export interface InstantiateMsg {
+  [k: string]: unknown;
+}
+export type QueryMsg = {
+  get_owner: {
+    [k: string]: unknown;
+  };
+};
 export interface State {
-  count: number;
   owner: Addr;
   [k: string]: unknown;
 }
 export interface TokenReadOnlyInterface {
   contractAddress: string;
-  getCount: () => Promise<GetCountResponse>;
+  getOwner: () => Promise<GetOwnerResponse>;
 }
 export class TokenQueryClient implements TokenReadOnlyInterface {
   client: LCDClient;
@@ -67,22 +61,21 @@ export class TokenQueryClient implements TokenReadOnlyInterface {
   constructor(client: LCDClient, contractAddress: string) {
     this.client = client;
     this.contractAddress = contractAddress;
-    this.getCount = this.getCount.bind(this);
+    this.getOwner = this.getOwner.bind(this);
   }
 
-  getCount = async (): Promise<GetCountResponse> => {
+  getOwner = async (): Promise<GetOwnerResponse> => {
     return this.client.wasm.contractQuery(this.contractAddress, {
-      get_count: {}
+      get_owner: {}
     });
   };
 }
 export interface TokenInterface extends TokenReadOnlyInterface {
   contractAddress: string;
-  increment: (funds?: Coins) => Promise<any>;
-  reset: ({
-    count
+  transfer: ({
+    target
   }: {
-    count: number;
+    target: string;
   }, funds?: Coins) => Promise<any>;
 }
 export class TokenClient extends TokenQueryClient implements TokenInterface {
@@ -95,37 +88,18 @@ export class TokenClient extends TokenQueryClient implements TokenInterface {
     this.client = client;
     this.wallet = wallet;
     this.contractAddress = contractAddress;
-    this.increment = this.increment.bind(this);
-    this.reset = this.reset.bind(this);
+    this.transfer = this.transfer.bind(this);
   }
 
-  increment = async (funds?: Coins): Promise<WaitTxBroadcastResult | TxInfo | undefined> => {
-    const senderAddress = isConnectedWallet(this.wallet) ? this.wallet.walletAddress : this.wallet.key.accAddress;
-    const execMsg = new MsgExecuteContract(senderAddress, this.contractAddress, {
-      increment: {}
-    }, funds);
-
-    if (isConnectedWallet(this.wallet)) {
-      const tx = await this.wallet.post({
-        msgs: [execMsg]
-      });
-      return waitForInclusionInBlock(this.client, tx.result.txhash);
-    } else {
-      const execTx = await this.wallet.createAndSignTx({
-        msgs: [execMsg]
-      });
-      return this.client.tx.broadcast(execTx);
-    }
-  };
-  reset = async ({
-    count
+  transfer = async ({
+    target
   }: {
-    count: number;
+    target: string;
   }, funds?: Coins): Promise<WaitTxBroadcastResult | TxInfo | undefined> => {
     const senderAddress = isConnectedWallet(this.wallet) ? this.wallet.walletAddress : this.wallet.key.accAddress;
     const execMsg = new MsgExecuteContract(senderAddress, this.contractAddress, {
-      reset: {
-        count
+      transfer: {
+        target
       }
     }, funds);
 
