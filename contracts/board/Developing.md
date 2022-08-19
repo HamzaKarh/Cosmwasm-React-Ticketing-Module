@@ -67,7 +67,7 @@ reproducible build process, so third parties can verify that the uploaded Wasm
 code did indeed come from the claimed rust code.
 
 To solve both these issues, we have produced `rust-optimizer`, a docker image to
-produce an extremely small build output in a consistent manner. The suggest way
+produce an extremely small build output in a consistent manner. The suggested way
 to run it is this:
 
 ```sh

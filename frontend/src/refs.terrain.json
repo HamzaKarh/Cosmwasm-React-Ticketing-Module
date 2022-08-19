@@ -7,15 +7,15 @@
       }
     },
     "task": {
-      "codeId": "26",
+      "codeId": "44",
       "contractAddresses": {
-        "default": "terra1plxt87jcgewnzksmy7h96hps4edzqqtj92cqdgl6l9qgffjy7d5q2f0x46"
+        "default": "terra1padhf4ykjuj8nn4zjlw8069paqzsm7ya0p8u2rsdmswtzel5z5tsnx4l2z"
       }
     },
     "token": {
-      "codeId": "29",
+      "codeId": "40",
       "contractAddresses": {
-        "default": "terra12ne7qtmdwd0j03t9t5es8md66wq4e5xg9neladrsag8fx3y89rcsnafl94"
+        "default": "terra1mthjuv6jghr4humsrjsqt3ca363yvgu3wwsq649hkuyf840p6acs254nqe"
       }
     }
   }
